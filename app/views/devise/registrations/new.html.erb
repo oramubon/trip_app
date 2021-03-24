@@ -58,7 +58,7 @@
 
   <div class="field">
     <%= f.label :gender %><br />
-    <%= f.text_field :gender %>
+    <%= f.select :gender, {'男性': 1, '女性': 2}, { prompt: '--'}, { class: 'form-control' , required: true } %>
   </div>
 
   <div class="actions">
