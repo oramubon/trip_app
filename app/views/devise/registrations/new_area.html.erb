@@ -1,0 +1,26 @@
+<h2>エリア情報登録</h2>
+
+<%= form_for @area do |f| %>
+  <%= render "devise/shared/error_messages", resource: @area %>
+
+  <div class="field">
+    <%= f.label :country %><br />
+    <%= f.collection_select(:country, Country.all, :id, :name, {}, {}) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :state %><br />
+    <%= f.text_field :state %>
+  </div>
+
+  <div class="field">
+    <%= f.label :language %><br />
+    <%= f.collection_select(:language, Language.all, :id, :name, {}, {}) %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
