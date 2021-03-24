@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2021_03_24_064232) do
 
   create_table "areas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "country", null: false
-    t.string "stste", null: false
+    t.string "state", null: false
     t.integer "language", null: false
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
