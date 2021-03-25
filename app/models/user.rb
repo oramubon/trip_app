@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_one          :area
 
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to       :gender_id
+  belongs_to :gender
 
   with_options presence: true do
     validates :first_name
