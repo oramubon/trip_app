@@ -7,4 +7,5 @@ Rails.application.routes.draw do
     post 'areas', to: 'users/registrations#create_area'
   end
   root to: 'tweets#index'
+  resources :users, only: :show
 end
