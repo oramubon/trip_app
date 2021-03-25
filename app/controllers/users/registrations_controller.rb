@@ -34,7 +34,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
  def area_params
-   params.require(:area).permit(:country, :state, :language)
+   params.require(:area).permit(:country_id, :state, :language_id)
  end
 
   # GET /resource/edit

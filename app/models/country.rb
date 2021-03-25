@@ -197,5 +197,5 @@ class Country < ActiveHash::Base
   ]
 
   include ActiveHash::Associations
-  has_many :aeas
+  has_many :areas
 end
