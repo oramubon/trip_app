@@ -34,9 +34,9 @@ ActiveRecord::Schema.define(version: 2021_03_24_064232) do
   end
 
   create_table "areas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "country", null: false
+    t.integer "country_id", null: false
     t.string "state", null: false
-    t.integer "language", null: false
+    t.integer "language_id", null: false
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2021_03_24_064232) do
     t.string "first_name", null: false
     t.string "last_name", null: false
     t.date "birthday", null: false
-    t.string "gender", null: false
+    t.integer "gender_id", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
