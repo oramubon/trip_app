@@ -19,6 +19,24 @@ class Users::RegistrationsController < Devise::RegistrationsController
     render :new_area
   end
 
+  def create_area
+    @user = User.new(session["devise.regist_data"]["user"])
+    @area = Area.new(area_params)
+     unless @area.valid?
+       render :new_area and return
+     end
+    @user.build_area(@area.attributes)
+    @user.save
+    session["devise.regist_data"]["user"].clear
+    sign_in(:user, @user)
+  end
+
+  private
+
+ def area_params
+   params.require(:area).permit(:country, :state, :language)
+ end
+
   # GET /resource/edit
   # def edit
   #   super
