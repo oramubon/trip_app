@@ -92,6 +92,7 @@ class Language < ActiveHash::Base
     { id: 90, name: 'Uzbek : O‘zbekcha' },
     { id: 91, name: 'Vietnamese : Tiếng Việt' },
     { id: 92, name: 'Welsh : Cymraeg' },
+    { id: 93, name: 'Other' },
   ]
 
   include ActiveHash::Associations
