@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_one_attached :image
-  has_one          :area
+  has_one :area
+  has_one :image
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :gender
