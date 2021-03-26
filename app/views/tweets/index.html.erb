@@ -1,12 +1,16 @@
 <%= render "shared/header" %>
 
-<div>
+<ul>
   <% @tweets.each do |tweet| %>
-    <%#<p><%= image_tag tweet.image %></p>
-    <p><%= tweet.title %></p>
-    <p><%= tweet.text %></p>
+    <li>
+      <%= link_to tweet_path(tweet.id) do %>
+        <%#<p><%= image_tag tweet.image %></p>
+        <p><%= tweet.title %></p>
+        <p><%= tweet.text %></p>
+      <% end %>
+    </li>
   <% end %>
-</div>
+</ul>
 
 <div>
   <%= link_to "新規投稿", new_tweet_path%>
