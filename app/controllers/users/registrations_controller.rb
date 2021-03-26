@@ -26,8 +26,24 @@ class Users::RegistrationsController < Devise::RegistrationsController
         render :new_area and return
       end
     @user.build_area(@area.attributes)
+    session["area"] = @area.attributes
+    @image = @user.build_image
+    render :new_image
+  end
+
+  def create_image
+    @user = User.new(session["devise.regist_data"]["user"])
+    @area = Area.new(session["area"])
+    @image = Image.new(image_params)
+      unless @area.valid?
+        render :new_image and return
+      end
+    @user.build_area(@area.attributes)
     @user.save
+    @image.user_id = @user.id
+    @image.save
     session["devise.regist_data"]["user"].clear
+    session["area"].clear
     sign_in(:user, @user)
     redirect_to root_path
   end
@@ -37,6 +53,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
  def area_params
    params.require(:area).permit(:country_id, :state, :language_id)
  end
+
+ def image_params
+  params.require(:image).permit(:image)
+ end
+
 
   # GET /resource/edit
   # def edit
