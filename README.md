@@ -15,6 +15,8 @@
 ### Association
 - has_many :tweets
 - has_one  :area
+- has_one  :image
+
 
 ## areas テーブル
 
@@ -23,6 +25,15 @@
 | country  | integer    | null: false                    |
 | state    | string     | null: false                    |
 | language | integer    | null: false                    |
+| user     | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to  :user
+
+## images テーブル
+
+| Column   | Type       | Options                        |
+| -------- | ---------- | ------------------------------ |
 | user     | references | null: false, foreign_key: true |
 
 ### Association
