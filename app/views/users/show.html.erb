@@ -1,0 +1,10 @@
+<%= render "shared/header" %>
+
+<div class="contents row">
+  <%# <%= image_tag @user.image %>
+  <% if @user.nickname.present? %>
+    <p><%= @user.nickname %>さん</p>
+  <% else %>
+    <p><%= @user.first_name %>さん</p>
+  <% end %>
+</div>

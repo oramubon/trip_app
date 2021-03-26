@@ -6,7 +6,11 @@
       </div>
       <ul class='lists-right'>
         <% if user_signed_in? %>
-          <li><%= link_to current_user.nickname, root_path, class: :nav__btn %></li>
+          <% if current_user.nickname.present? %>
+            <li><%= link_to current_user.nickname, user_path(current_user.id), class: :nav__btn %></li>
+          <% else %>
+            <li><%= link_to current_user.first_name, user_path(current_user.id), class: :nav__btn %></li>
+          <% end %>
           <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: :nav__btn %></li>
         <% else %>
           <li><%= link_to "ログイン", new_user_session_path, class: :nav__btn %></li>
