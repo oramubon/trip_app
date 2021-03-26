@@ -1,7 +1,7 @@
 <%= render "shared/header" %>
 
 <div class="contents row">
-  <%= image_tag @user.image.image %>
+  <%= image_tag @user.image.image, class: 'message-image' %>
   <% if @user.nickname.present? %>
     <p><%= @user.nickname %>さん</p>
   <% else %>

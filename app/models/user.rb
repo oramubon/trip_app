@@ -19,4 +19,9 @@ class User < ApplicationRecord
   with_options numericality: { other_than: 1, message: 'select' } do
     validates :gender_id
   end
+
+  ASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
+  with_options format: { with: ASSWORD_REGEX, message: 'Include both letters and numbers' } do
+    validates :password
+  end
 end
