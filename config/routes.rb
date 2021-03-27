@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   end
   root to: 'tweets#index'
   resources :users,  only: :show
-  resources :tweets, only: [:new, :create, :show, :edit, :update]
+  resources :tweets
 end

@@ -6,6 +6,6 @@
   <p><%= @tweet.text %></p>
   <ul>
     <li><%= link_to 'Edit', edit_tweet_path %></li>
-    <li></li>
+    <li><%= link_to 'Destroy', tweet_path, method: :delete %></li>
   </ul>
 </div>
