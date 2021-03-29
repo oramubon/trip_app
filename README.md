@@ -17,7 +17,7 @@
 - has_many :comments
 - has_one  :area
 - has_one  :image
-
+- has_many :reviews
 
 ## areas テーブル
 
@@ -63,3 +63,17 @@
 ### Association
 - belongs_to  :user
 - belongs_to  :tweet
+
+
+## comments テーブル
+
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| score   | integer    | null: false                    |
+| content | text       |                                |
+| tweet   | references | null: false, foreign_key: true |
+| user    | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to  :user
+
