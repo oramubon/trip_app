@@ -14,6 +14,7 @@
 
 ### Association
 - has_many :tweets
+- has_many :comments
 - has_one  :area
 - has_one  :image
 
@@ -43,9 +44,22 @@
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
-| title  | string     | null: false, foreign_key: true |
-| text   | text       | null: false, foreign_key: true |
+| title  | string     | null: false                    |
+| text   | text       | null: false                    |
 | user   | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to  :user
+- has_many    :comments
+
+## comments テーブル
+
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| comment | text       | null: false                    |
+| tweet   | references | null: false, foreign_key: true |
+| user    | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to  :user
+- belongs_to  :tweet
