@@ -14,7 +14,6 @@
 
 ### Association
 - has_many :tweets
-- has_many :comments
 - has_one  :area
 - has_one  :image
 - has_many :reviews
@@ -50,20 +49,6 @@
 
 ### Association
 - belongs_to  :user
-- has_many    :comments
-
-## comments テーブル
-
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| comment | text       | null: false                    |
-| tweet   | references | null: false, foreign_key: true |
-| user    | references | null: false, foreign_key: true |
-
-### Association
-- belongs_to  :user
-- belongs_to  :tweet
-
 
 ## comments テーブル
 
