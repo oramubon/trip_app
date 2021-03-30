@@ -1,17 +1,14 @@
-<%= render "shared/header" %>
-
 <section class="section mt-6">
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-5">
         <div class="card mb-6">
+          <header class="card-header">
+            <p class="card-header-title">
+              <%= @user.nickname %>
+            </p>
+          </header>
           <div class="card-content">
-            <%#<%= image_tag @user.image.image, class: 'message-image' %>
-            <% if @user.nickname.present? %>
-              <p><%= @user.nickname %>さん</p>
-            <% else %>
-              <p><%= @user.first_name %>さん</p>
-            <% end %>
             <div class="content average-score">
               <div class="star-rating mb-2">
                 <div class="star-rating-front" style="width: <%= @user.review_score_percentage %>%">★★★★★</div>
@@ -23,7 +20,22 @@
             </div>
           </div>
         </div>
-        <%= render 'reviews/form', review: @review, user: @user %>
+        <table class="table is-fullwidth has-text-centered">
+          <thead>
+            <tr>
+              <th>ユーザー</th><th>点数</th><th>内容</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @reviews.each do |review| %>
+              <tr>
+                <td><%= review.reviewer.nickname %></td>
+                <td><%= review.score %></td>
+                <td><%= review.content %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
