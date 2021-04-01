@@ -50,7 +50,7 @@
 ### Association
 - belongs_to  :user
 
-## comments テーブル
+## reviews テーブル
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
