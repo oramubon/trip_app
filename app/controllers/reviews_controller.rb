@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :new, :create]
+
   def index
     @user = User.find(params[:user_id])
     @reviews = @user.reviewee_reviews
@@ -26,4 +28,5 @@ class ReviewsController < ApplicationController
   def review_params
     params.require(:review).permit(:reviewee_id, :score, :content).merge(reviewer_id: current_user.id)
   end
+
 end
