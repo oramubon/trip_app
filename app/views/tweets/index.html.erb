@@ -1,17 +1,27 @@
-<%= render "shared/header" %>
-
-<ul>
-  <% @tweets.each do |tweet| %>
-    <li>
-      <%= link_to tweet_path(tweet.id) do %>
-        <%#<p><%= image_tag tweet.image %></p>
-        <p><%= tweet.title %></p>
-        <p><%= tweet.text %></p>
+<div class="container mt-6">
+  <div class="columns is-centered">
+    <div class="column is-5">
+      <% @tweets.each do |tweet| %>
+        <div class="card mb-6">
+          <header class="card-header">
+            <p class="card-header-title">
+              <%= tweet.title %></p>
+            </p>
+            <% if tweet.user.nickname.present? %>
+              <%= link_to tweet.user.nickname, user_path(tweet.user_id), class: "button card-header-item mt-1 mr-4" %>
+            <% else %>
+              <%= link_to tweet.user.first_name, user_path(tweet.user_id), class: "button card-header-item mt-1 mr-4" %>
+            <% end %>
+          </header>
+          <div class="card-content">
+            <div class="content">
+              <div>
+                <%= link_to image_tag(tweet.image, class: "img" ), tweet_path(tweet.id) %>
+              </div>
+            </div>
+          </div> 
+        </div> 
       <% end %>
-    </li>
-  <% end %>
-</ul>
-
-<div>
-  <%= link_to "新規投稿", new_tweet_path%>
+    </div>
+  </div>
 </div>

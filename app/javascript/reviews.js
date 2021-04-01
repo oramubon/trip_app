@@ -1,3 +1,4 @@
+if (document.URL.match( /reviews/ ) && document.URL.match( /new/ )) {
 window.addEventListener('load', () => {
   const stars = document.querySelector(".ratings").children;
   const ratingValue = document.getElementById("rating-value");
@@ -32,3 +33,4 @@ window.addEventListener('load', () => {
     })
   }
 })
+}

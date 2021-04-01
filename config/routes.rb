@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'homes#top'
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
@@ -9,9 +10,8 @@ Rails.application.routes.draw do
     post 'images', to: 'users/registrations#create_image'
     
   end
-  root to: 'tweets#index'
-  resources :users,  only: :show do
-    resources :reviews, only: [:index, :create]
+  resources :users,  only: [:show, :index] do
+    resources :reviews, only: [:index, :new, :create]
   end
   resources :tweets
 end
