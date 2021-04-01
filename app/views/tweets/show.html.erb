@@ -1,11 +1,25 @@
-<%= render "shared/header" %>
-
-<div>
-  <%#<p><%= image_tag @tweet.image %></p>
-  <p><%= @tweet.title %></p>
-  <p><%= @tweet.text %></p>
-  <ul>
-    <li><%= link_to 'Edit', edit_tweet_path %></li>
-    <li><%= link_to 'Destroy', tweet_path, method: :delete %></li>
-  </ul>
+<div class="container mt-6">
+  <div class="columns is-centered">
+    <div class="column is-5">
+      <div class="card mb-6">
+        <header class="card-header">
+            <p class="card-header-title">
+              <%= @tweet.title %>
+            </p>
+            <% if user_signed_in? && current_user.id == @tweet.user_id %>
+              <%= link_to 'Edit', edit_tweet_path, class: "button card-header-item mt-1 mr-4" %>
+              <%= link_to 'Destroy', tweet_path, method: :delete, class: "button card-header-item mt-1 mr-4" %> 
+            <% end %>
+        </header>
+        <div class="card-content">
+          <div class="content">
+            <%= image_tag @tweet.image, class: "img" %>
+          </div>
+          <div class="content">
+            <p><%= @tweet.text %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

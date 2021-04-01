@@ -1,0 +1,41 @@
+<div class="container mt-6">
+  <div class="columns is-centered">
+    <div class="column is-5">
+      <% @users.each do |user| %>
+        <div class="card mb-6">
+          <header class="card-header">
+            <p class="card-header-title">
+              <% if user.nickname.present? %>
+                <%= user.nickname %>
+              <% else %>
+                <%= user.first_name %>
+              <% end %>
+            </p>
+          </header>
+          <div class="card-content">
+            <div  class="content">
+              <%= image_tag user.image.image, class: "img" %>
+            </div>
+            <div class="content average-score">
+              <div class="star-rating mb-2">
+                <div class="star-rating-front" style="width: <%= user.review_score_percentage %>%">★★★★★</div>
+                <div class="star-rating-back">★★★★★</div>
+              </div>
+              <div class="average-score-display ml-3 pt-2">
+                <%= user.avg_score %>点（<%= user.reviewee_reviews.count %>件のレビュー）
+              </div>
+            </div>
+          </div>
+          <% if user_signed_in?%>
+            <footer class="card-footer">
+              <%= link_to "レビューを見る", user_reviews_path(user), class: "button card-footer-item" %>
+              <% if current_user.id != user.id %>
+                <%= link_to "レビューを書く", new_user_review_path(user), class: "button card-footer-item" %>
+              <% end %>
+            </footer>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

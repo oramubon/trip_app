@@ -45,7 +45,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session["devise.regist_data"]["user"].clear
     session["area"].clear
     sign_in(:user, @user)
-    redirect_to root_path
+    redirect_to tweets_path
   end
 
   private
