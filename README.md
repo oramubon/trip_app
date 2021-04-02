@@ -16,7 +16,8 @@
 - has_many :tweets
 - has_one  :area
 - has_one  :image
-- has_many :reviews
+- has_many :reviewer_reviews, class_name: 'Review', :foreign_key => 'reviewer_id'
+- has_many :reviewee_reviews, class_name: 'Review', :foreign_key => 'reviewee_id'
 
 ## areas テーブル
 
@@ -28,7 +29,7 @@
 | user     | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to  :user
+- belongs_to :user
 
 ## images テーブル
 
@@ -37,7 +38,7 @@
 | user     | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to  :user
+- belongs_to :user
 
 ## tweets テーブル
 
@@ -48,17 +49,18 @@
 | user   | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to  :user
+- belongs_to :user
 
 ## reviews テーブル
 
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| score   | integer    | null: false                    |
-| content | text       |                                |
-| tweet   | references | null: false, foreign_key: true |
-| user    | references | null: false, foreign_key: true |
+| Column      | Type       | Options                        |
+| ----------- | ---------- | ------------------------------ |
+| score       | integer    | null: false                    |
+| content     | text       |                                |
+| reviewer_id | references | null: false, foreign_key: true |
+| reviewee_id | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to  :user
+- belongs_to :reviewer, :class_name => 'User', :foreign_key => 'reviewer_id'
+- belongs_to :reviewee, :class_name => 'User', :foreign_key => 'reviewee_id'
 
