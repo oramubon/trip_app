@@ -1,5 +1,6 @@
 class ToursController < ApplicationController
   def index
+    @tours = Tour.includes(:user).order("created_at DESC")
   end
 
   def new
