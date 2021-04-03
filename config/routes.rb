@@ -14,5 +14,5 @@ Rails.application.routes.draw do
     resources :reviews, only: [:index, :new, :create]
   end
   resources :tweets
-  resources :tours, only: [:index, :new, :create, :show, :edit, :update]
+  resources :tours
 end
