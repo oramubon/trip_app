@@ -1,4 +1,8 @@
 class ToursController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :show, :edit, :update, :destroy]
+  before_action :set_tour,           only: [:show, :edit, :update, :destroy]
+  before_action :move_to_index,      only: [:edit, :update, :destroy]
+
   def index
     @tours = Tour.includes(:user).order("created_at DESC")
   end
@@ -17,15 +21,12 @@ class ToursController < ApplicationController
   end
 
   def show
-    @tour = Tour.find(params[:id])
   end
 
   def edit
-    @tour = Tour.find(params[:id])
   end
 
   def update
-    @tour = Tour.find(params[:id])
     @tour.update(tour_params)
     if @tour.save
       redirect_to tour_path
@@ -35,7 +36,6 @@ class ToursController < ApplicationController
   end
 
   def destroy
-    @tour = Tour.find(params[:id])
     @tour.destroy
     redirect_to tours_path
   end
@@ -44,5 +44,14 @@ class ToursController < ApplicationController
 
   def tour_params
     params.require(:tour).permit(:image, :title, :start_on, :end_on, :country_id, :description, :price).merge(user_id: current_user.id)
+  end
+  def set_tweet
+    @tour = Tweet.find(params[:id])
+  end
+
+  def move_to_index
+    unless current_user.id == @tour.user_id
+      redirect_to action: :index
+    end
   end
 end
