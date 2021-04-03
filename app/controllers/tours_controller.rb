@@ -20,6 +20,20 @@ class ToursController < ApplicationController
     @tour = Tour.find(params[:id])
   end
 
+  def edit
+    @tour = Tour.find(params[:id])
+  end
+
+  def update
+    @tour = Tour.find(params[:id])
+    @tour.update(tour_params)
+    if @tour.save
+      redirect_to tour_path
+    else
+      render :edit
+    end
+  end
+
   private
 
   def tour_params

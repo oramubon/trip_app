@@ -7,7 +7,7 @@
               <%= @tour.title %>
             </p>
             <% if user_signed_in? && current_user.id == @tour.user_id %>
-              <%= link_to 'Edit', root_path, class: "button card-header-item mt-1 mr-4" %>
+              <%= link_to 'Edit', edit_tour_path, class: "button card-header-item mt-1 mr-4" %>
               <%= link_to 'Destroy', root_path, class: "button card-header-item mt-1 mr-4" %> 
             <% end %>
         </header>
