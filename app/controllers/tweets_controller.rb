@@ -29,7 +29,7 @@ class TweetsController < ApplicationController
   def update
     @tweet.update(tweet_params)
     if @tweet.save
-      redirect_to tweets_path
+      redirect_to tweet_path
     else
       render :edit
     end

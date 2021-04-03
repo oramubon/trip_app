@@ -201,4 +201,5 @@ class Country < ActiveHash::Base
 
   include ActiveHash::Associations
   has_many :areas
+  has_many :tours
 end

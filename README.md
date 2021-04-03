@@ -18,6 +18,8 @@
 - has_one  :image
 - has_many :reviewer_reviews, class_name: 'Review', :foreign_key => 'reviewer_id'
 - has_many :reviewee_reviews, class_name: 'Review', :foreign_key => 'reviewee_id'
+- has_many :tours
+- has_many :purchases
 
 ## areas テーブル
 
@@ -33,9 +35,9 @@
 
 ## images テーブル
 
-| Column   | Type       | Options                        |
-| -------- | ---------- | ------------------------------ |
-| user     | references | null: false, foreign_key: true |
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| user   | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
@@ -64,3 +66,41 @@
 - belongs_to :reviewer, :class_name => 'User', :foreign_key => 'reviewer_id'
 - belongs_to :reviewee, :class_name => 'User', :foreign_key => 'reviewee_id'
 
+## tours テーブル
+
+| Column      | Type       | Options                        |
+| ----------- | ---------- | ------------------------------ |
+| title       | string     | null: false                    |
+| start_on    | date       | null: false                    |
+| end_on      | date       | null: false                    |
+| country     | integer    | null: false                    |
+| description | text       | null: false                    |
+| price       | integer    | null: false                    |
+| user        | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :user
+- has_one    :purchase
+
+## purchases テーブル
+
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| user   | references | null: false, foreign_key: true |
+| tour   | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :user
+- belongs_to :tour
+- has_one    :information
+
+## information テーブル
+
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| phone_number | integer    | null: false                    |
+| other        | string     |                                |
+| purchase     | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :purchase
