@@ -45,8 +45,8 @@ class ToursController < ApplicationController
   def tour_params
     params.require(:tour).permit(:image, :title, :start_on, :end_on, :country_id, :description, :price).merge(user_id: current_user.id)
   end
-  def set_tweet
-    @tour = Tweet.find(params[:id])
+  def set_tour
+    @tour = Tour.find(params[:id])
   end
 
   def move_to_index
