@@ -31,7 +31,11 @@
         <tbody>
           <% @reviews.each do |review| %>
             <tr>
-              <td><%= review.reviewer.nickname %></td>
+              <% if review.reviewer.nickname.present? %>
+                <td><%= review.reviewer.nickname %></td>
+              <% else %>
+                <td><%= review.reviewer.first_name %></td>
+              <% end %>
               <td><%= review.score %></td>
               <td><%= link_to "クチコミを見る", root_path, class: "button is-size-7" %></td>
             </tr>
