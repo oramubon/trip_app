@@ -12,9 +12,7 @@ class Tour < ApplicationRecord
     validates :start_on
     validates :end_on
     validates :description
-    with_options format: { with: /\A[0-9]\z/, message: 'Half-width number' } do
-      validates :price, numericality: { only_integer: true, greater_than: 299, less_than: 10000000, message: 'Out of setting range' }
-    end
+    validates :price, numericality: { only_integer: true, greater_than: 299, less_than: 10000000, message: 'Out of setting range' }
   end
 
   with_options numericality: { other_than: 1, message: 'select' } do

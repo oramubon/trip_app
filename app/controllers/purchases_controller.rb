@@ -12,6 +12,7 @@ class PurchasesController < ApplicationController
     if @purchase_information.valid?
       pay_product
       @purchase_information.save
+      redirect_to tours_path
     else
       render new
     end
