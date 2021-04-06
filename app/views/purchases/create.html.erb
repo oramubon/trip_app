@@ -1,0 +1,25 @@
+<div class="container mt-6">
+  <div class="columns is-centered">
+    <div class="column is-5">
+      <div class="card mb-6">
+        <header class="card-header">
+            <p class="card-header-title">
+              <%= @tour.title %>
+            </p>
+        </header>
+        <div class="card-content">
+          <div class="content tour-img">
+          <div class="content">
+            <p>日程：<%= @tour.start_on %> 〜 <%= @tour.end_on %></p>
+          </div>
+          <div class="content">
+            <p>旅先：<%= @tour.country.name %></p>
+          </div>
+          <div class="content">
+            <p>料金：<%= @tour.price %> 円</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
