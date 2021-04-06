@@ -12,8 +12,13 @@
             <% end %>
         </header>
         <div class="card-content">
-          <div class="content">
+          <div class="content tour-img">
             <%= image_tag @tour.image, class: "img" %>
+            <% if @tour.purchase.present? %> 
+              <div class='fin is-size-1'>
+                <span>Finish!!</span>
+              </div>
+            <% end %>
           </div>
           <div class="content">
             <p>日程：<%= @tour.start_on %> 〜 <%= @tour.end_on %></p>
