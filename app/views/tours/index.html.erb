@@ -17,8 +17,8 @@
             <div class="content tour-img">
               <%= link_to image_tag(tour.image, class: "img" ), tour_path(tour) %>
               <% if tour.purchase.present? %> 
-                <div class='fin is-size-1'>
-                  <span>Finish!!</span>
+                <div class="fin is-size-1" style="font-family: cursive;">
+                  <span>Finish</span>
                 </div>
               <% end %>
             </div>
