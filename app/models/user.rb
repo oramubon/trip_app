@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :reviewer_reviews, class_name: 'Review', :foreign_key => 'reviewer_id'
   has_many :reviewee_reviews, class_name: 'Review', :foreign_key => 'reviewee_id'
   has_many :tours
+  has_many :purchases
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :gender

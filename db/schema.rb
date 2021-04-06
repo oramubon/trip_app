@@ -51,8 +51,8 @@ ActiveRecord::Schema.define(version: 2021_04_05_121543) do
   end
 
   create_table "information", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "phone_number", null: false
-    t.text "string"
+    t.string "phone_number", null: false
+    t.text "other"
     t.bigint "purchase_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

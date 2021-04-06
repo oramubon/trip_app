@@ -29,6 +29,11 @@
             <p>料金：<%= @tour.price %> 円</p>
           </div>
         </div>
+        <footer class="card-footer">
+          <% if current_user.id != @tour.user.id && @tour.purchase.blank? %>
+            <%= link_to "申し込む", new_tour_purchase_path(@tour), class: "button card-footer-item" %>
+          <% end %>
+        </footer>
       </div>
     </div>
   </div>
