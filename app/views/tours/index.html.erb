@@ -14,8 +14,13 @@
             <% end %>
           </header>
           <div class="card-content">
-            <div class="content">
+            <div class="content tour-img">
               <%= link_to image_tag(tour.image, class: "img" ), tour_path(tour) %>
+              <% if tour.purchase.present? %> 
+                <div class="fin is-size-1" style="font-family: cursive;">
+                  <span>Finish</span>
+                </div>
+              <% end %>
             </div>
             <div class="content">
               <p>日程：<%= tour.start_on %> 〜 <%= tour.end_on %></p>

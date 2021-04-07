@@ -12,8 +12,13 @@
             <% end %>
         </header>
         <div class="card-content">
-          <div class="content">
+          <div class="content tour-img">
             <%= image_tag @tour.image, class: "img" %>
+            <% if @tour.purchase.present? %> 
+              <div class="fin is-size-1" style="font-family: cursive;">
+                <span>Finish</span>
+              </div>
+            <% end %>
           </div>
           <div class="content">
             <p>日程：<%= @tour.start_on %> 〜 <%= @tour.end_on %></p>
@@ -29,6 +34,11 @@
             <p>料金：<%= @tour.price %> 円</p>
           </div>
         </div>
+        <footer class="card-footer">
+          <% if current_user.id != @tour.user.id && @tour.purchase.blank? %>
+            <%= link_to "申し込む", new_tour_purchase_path(@tour), class: "button card-footer-item" %>
+          <% end %>
+        </footer>
       </div>
     </div>
   </div>
