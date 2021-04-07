@@ -25,7 +25,14 @@
             </div>
           </div>
         </div>
-        <%= link_to 'レビューを書く', user_reviews_path(@user) %>
+        <% if user_signed_in?%>
+          <footer class="card-footer">
+            <%= link_to "レビューを見る", user_reviews_path(@user), class: "button card-footer-item" %>
+            <% if current_user.id != @user.id %>
+              <%= link_to "レビューを書く", new_user_review_path(@user), class: "button card-footer-item" %>
+            <% end %>
+          </footer>
+        <% end %>
       </div>
     </div>
   </div>
