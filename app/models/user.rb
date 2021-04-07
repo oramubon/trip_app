@@ -45,4 +45,13 @@ class User < ApplicationRecord
       0.0
     end
   end
+
+  def self.search(search)
+    if search != ""
+      User.where('nickname first_name LIKE(?)', "%#{search}%")
+      User.where('first_name LIKE(?)', "%#{search}%")
+    else
+      User.all
+    end
+  end
 end

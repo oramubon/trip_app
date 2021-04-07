@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   end
   resources :users,  only: [:show, :index] do
     resources :reviews, only: [:index, :new, :create]
+    collection do
+      get 'search'
+    end
   end
   resources :tweets
   resources :tours do
