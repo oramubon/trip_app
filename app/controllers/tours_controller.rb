@@ -40,6 +40,10 @@ class ToursController < ApplicationController
     redirect_to tours_path
   end
 
+  def search
+    @tours = Tour.where(country_id: params[:country_id])
+  end
+
   private
 
   def tour_params

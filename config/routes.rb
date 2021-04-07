@@ -16,5 +16,8 @@ Rails.application.routes.draw do
   resources :tweets
   resources :tours do
     resources :purchases, only: [:new, :create]
+    collection do
+      get 'search'
+    end
   end
 end
