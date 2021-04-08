@@ -4,7 +4,7 @@ class ToursController < ApplicationController
   before_action :move_to_index,      only: [:edit, :update, :destroy]
 
   def index
-    @tours = Tour.includes(:user).order("created_at DESC")
+    @tours = Tour.includes(:user).order("created_at DESC").page(params[:page]).per(5)
   end
 
   def new
