@@ -54,7 +54,7 @@ class ToursController < ApplicationController
   end
 
   def move_to_index
-    unless current_user.id == @tour.user_id
+    unless current_user.id == @tour.user_id && @tour.purchase.blank?
       redirect_to action: :index
     end
   end

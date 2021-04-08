@@ -8,7 +8,7 @@
             </p>
             <% if user_signed_in? && current_user.id == @tweet.user_id %>
               <%= link_to 'Edit', edit_tweet_path, class: "button card-header-item mt-1 mr-4" %>
-              <%= link_to 'Destroy', tweet_path, method: :delete, class: "button card-header-item mt-1 mr-4" %> 
+              <%= link_to 'Destroy', tweet_path, method: :delete, class: "button card-header-item mt-1 mr-4", data: { confirm: '削除しますか？' } %> 
             <% end %>
         </header>
         <div class="card-content">
