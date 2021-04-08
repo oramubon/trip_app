@@ -13,7 +13,7 @@
         <div class="card mb-6">
           <header class="card-header">
             <p class="card-header-title">
-              <%= tour.title %></p>
+              <%= tour.title %>
             </p>
             <% if tour.user.nickname.present? %>
               <%= link_to tour.user.nickname, user_path(tour.user_id), class: "button card-header-item mt-1 mr-4" %>
