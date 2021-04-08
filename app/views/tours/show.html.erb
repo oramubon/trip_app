@@ -28,7 +28,7 @@
           </div>
           <div class="content">
             <p>内容</p>
-            <%= simple_format(@tour.description) %>
+            <%= simple_format @tour.description, class: "text" %>
           </div>
           <div class="content">
             <p>料金：<%= @tour.price %> 円</p>
