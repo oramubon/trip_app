@@ -9,6 +9,12 @@
               <% else %>
                 <%= @user.first_name %>
               <% end %>
+            <p class="card-header-item mt-3 mr-4">
+              年齢：<%= @user.birthday %>
+            </p>
+            </p>
+            <p class="card-header-item mt-3 mr-4">
+              性別：<%= @user.gender.name %>
             </p>
         </header>
         <div class="card-content">
@@ -23,6 +29,10 @@
             <div class="average-score-display ml-3 mb-2 pt-2">
               <%= @user.avg_score %>点（<%= @user.reviewee_reviews.count %>件のレビュー）
             </div>
+          </div>
+          <div class="content">
+            <p>出身：<%= @user.area.country.name %> <%= @user.area.state %></p>
+            <p>母国語：<%= @user.area.language.name %></p>
           </div>
         </div>
         <% if user_signed_in?%>
