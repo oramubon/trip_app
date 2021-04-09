@@ -1,6 +1,14 @@
 <div class="container mt-6">
   <div class="columns is-centered">
     <div class="column is-5">
+      <%= form_with(url: search_users_path, local: true, method: :get, class: "search-form") do |f| %>
+        <%= f.text_field :keyword, placeholder: "ユーザーを検索する", class: "input" %>
+        <%= f.submit "検索", class: "button ml-2" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="columns is-centered">
+    <div class="column is-5">
       <% @users.each do |user| %>
         <div class="card mb-6">
           <header class="card-header">
