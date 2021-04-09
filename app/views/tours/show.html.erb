@@ -27,11 +27,13 @@
             <p>旅先：<%= @tour.country.name %></p>
           </div>
           <div class="content">
-            <p>内容</p>
-            <%= simple_format @tour.description, class: "text" %>
+            <p>料金：<%= @tour.price %> 円</p>
           </div>
           <div class="content">
-            <p>料金：<%= @tour.price %> 円</p>
+            内容
+            <div class="mt-1 mb-2">
+              <%= simple_format @tour.description, class: "text" %>
+            </div>
           </div>
         </div>
         <footer class="card-footer">
