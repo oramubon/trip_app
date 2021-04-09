@@ -10,7 +10,7 @@
                 <%= @user.first_name %>
               <% end %>
             <p class="card-header-item mt-3 mr-4">
-              年齢：<%= @user.birthday %>
+              年齢：<%= @user.get_age(@user.birthday) %>
             </p>
             </p>
             <p class="card-header-item mt-3 mr-4">

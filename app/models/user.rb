@@ -54,4 +54,10 @@ class User < ApplicationRecord
       User.all
     end
   end
+
+  def get_age(birthday)
+    today = Date.today.strftime("%Y%m%d").to_i
+    birthday = birthday.strftime("%Y%m%d").to_i
+    return (today - birthday) / 10000
+  end
 end
