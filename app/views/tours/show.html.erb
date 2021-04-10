@@ -17,7 +17,7 @@
               <% end %>
             <% end %>
         </header>
-        <div class="card-content tour-details">
+        <div class="card-content details">
           <div class="content tour-img">
             <%= image_tag @tour.image, class: "img" %>
             <% if @tour.purchase.present? %> 
@@ -29,7 +29,6 @@
           <div class="mt-5 mb-5 ml-5">
             <div class="content">
               <p>日程：<%= @tour.start_on %> 〜 <%= @tour.end_on %></p>
-            </div>
             <div class="content">
               <p>旅先：<%= @tour.country.name %></p>
             </div>
@@ -38,8 +37,8 @@
             </div>
             <div class="content">
               内容
-              <div class="mt-1 mb-2">
-                <%= simple_format @tour.description, class: "text" %>
+              <div>
+                <%= simple_format @tour.description, class: "text m-2" %>
               </div>
             </div>
           </div>
