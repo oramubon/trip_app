@@ -4,5 +4,6 @@ class Image < ApplicationRecord
 
   with_options presence: true do
     validates :image
+    validates :introduction
   end
 end

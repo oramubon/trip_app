@@ -55,7 +55,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
  end
 
  def image_params
-  params.require(:image).permit(:image)
+  params.require(:image).permit(:image, :introduction)
  end
 
 

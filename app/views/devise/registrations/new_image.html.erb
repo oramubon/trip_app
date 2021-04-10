@@ -1,14 +1,16 @@
 <div class="container mt-6">
   <div class="columns is-centered">
-    <div class="column is-4">
+    <div class="column is-6">
       <%= form_for @image do |f| %>
       <%= render "devise/shared/error_messages", resource: @image %>
-
-        <div class="field">
+        <div class="field new-image">
           <%= f.label :image %>
           <%= f.file_field :image, class: "input" %>
         </div>
-
+        <div class="field">
+          <%= f.label :introduction %>
+          <%= f.text_area :introduction, :placeholder => "introduction", class: "textarea" %>
+        </div>
         <div class="actions">
           <%= f.submit "Sign up", class: "button is-success" %>
         </div>
