@@ -35,7 +35,7 @@
           </div>
         </div>
         <%= form_with model: @purchase_information, url: tour_purchases_path, id: 'charge-form', local: true do |f| %>
-          <div class='field m-5 card-num'>
+          <div class='field ml-5 mb-5 card-num'>
             <%= f.label :num,  "カード番号" %>
             <%= f.text_field :num, autofocus: true, placeholder:"カード番号(半角英数字)", class:"num input", maxlength:"16" %>
           </div>
@@ -52,13 +52,13 @@
               <p class="m-3">年</p>
             </div>
           </div>
-          <div class="field m-5 card-phone">
+          <div class="field m-5 phone-number">
             <%= f.label :phone_number %>
             <p class="control">
               <%= f.text_field :phone_number, :placeholder => "phone_number", class: "input" %>
             </p>
           </div>
-          <div class="field m-5">
+          <div class="field m-5 other">
             <%= f.label :other %>
             <p class="control">
               <%= f.text_area :other, :placeholder => "other", class: "textarea" %>
