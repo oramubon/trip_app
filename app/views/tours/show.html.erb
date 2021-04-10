@@ -9,6 +9,12 @@
             <% if current_user.id == @tour.user_id && @tour.purchase.blank? %>
               <%= link_to 'Edit', edit_tour_path, class: "button card-header-item mt-1 mr-4" %>
               <%= link_to 'Destroy', tour_path, method: :delete, class: "button card-header-item mt-1 mr-4",  data: { confirm: '削除しますか？' }  %> 
+            <% else %>
+              <% if @tour.user.nickname.present? %>
+                <%= link_to @tour.user.nickname, user_path(@tour.user_id), class: "button card-header-item mt-1 mr-4" %>
+              <% else %>
+                <%= link_to @tour.user.first_name, user_path(@tour.user_id), class: "button card-header-item mt-1 mr-4" %>
+              <% end %>
             <% end %>
         </header>
         <div class="card-content tour-details">
