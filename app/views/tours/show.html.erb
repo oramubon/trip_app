@@ -1,6 +1,6 @@
 <div class="container mt-6">
   <div class="columns is-centered">
-    <div class="column is-5">
+    <div class="column is-10">
       <div class="card mb-6">
         <header class="card-header">
             <p class="card-header-title">
@@ -11,7 +11,7 @@
               <%= link_to 'Destroy', tour_path, method: :delete, class: "button card-header-item mt-1 mr-4",  data: { confirm: '削除しますか？' }  %> 
             <% end %>
         </header>
-        <div class="card-content">
+        <div class="card-content tour-details">
           <div class="content tour-img">
             <%= image_tag @tour.image, class: "img" %>
             <% if @tour.purchase.present? %> 
@@ -20,19 +20,21 @@
               </div>
             <% end %>
           </div>
-          <div class="content">
-            <p>日程：<%= @tour.start_on %> 〜 <%= @tour.end_on %></p>
-          </div>
-          <div class="content">
-            <p>旅先：<%= @tour.country.name %></p>
-          </div>
-          <div class="content">
-            <p>料金：<%= @tour.price %> 円</p>
-          </div>
-          <div class="content">
-            内容
-            <div class="mt-1 mb-2">
-              <%= simple_format @tour.description, class: "text" %>
+          <div class="mt-5 mb-5 ml-5">
+            <div class="content">
+              <p>日程：<%= @tour.start_on %> 〜 <%= @tour.end_on %></p>
+            </div>
+            <div class="content">
+              <p>旅先：<%= @tour.country.name %></p>
+            </div>
+            <div class="content">
+              <p>料金：<%= @tour.price %> 円</p>
+            </div>
+            <div class="content">
+              内容
+              <div class="mt-1 mb-2">
+                <%= simple_format @tour.description, class: "text" %>
+              </div>
             </div>
           </div>
         </div>
