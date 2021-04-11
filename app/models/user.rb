@@ -48,10 +48,15 @@ class User < ApplicationRecord
 
   def self.search(search)
     if search != ""
-      User.where('nickname first_name LIKE(?)', "%#{search}%")
-      User.where('first_name LIKE(?)', "%#{search}%")
+      User.where('nickname LIKE(?) or first_name LIKE(?)', "%#{search}%", "%#{search}%")
     else
       User.all
     end
+  end
+
+  def get_age(birthday)
+    today = Date.today.strftime("%Y%m%d").to_i
+    birthday = birthday.strftime("%Y%m%d").to_i
+    return (today - birthday) / 10000
   end
 end

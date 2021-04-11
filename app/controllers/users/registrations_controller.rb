@@ -35,7 +35,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new(session["devise.regist_data"]["user"])
     @area = Area.new(session["area"])
     @image = Image.new(image_params)
-      unless @area.valid?
+      unless @image.valid?
         render :new_image and return
       end
     @user.build_area(@area.attributes)
@@ -55,7 +55,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
  end
 
  def image_params
-  params.require(:image).permit(:image)
+  params.require(:image).permit(:image, :introduction)
  end
 
 

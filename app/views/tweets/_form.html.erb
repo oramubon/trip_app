@@ -1,0 +1,23 @@
+<div class="container mt-6">
+  <div class="columns is-centered">
+    <div class="column is-6">
+      <%= form_with model: tweet, local: true do |f| %>
+        <div class="field">
+          <%= f.label :image, "画像" %>
+          <%= f.file_field :image, class: "input" %>
+        </div>
+        <div class="field">
+          <%= f.label :title, "タイトル" %>
+          <%= f.text_field :title, autofocus: true, :placeholder => "BBQ", class: "input" %>
+        </div>
+        <div class="field">
+          <%= f.label :text, "内容" %>
+          <%= f.text_area :text, :placeholder => "例）今日はみんなでBBQを…", class: "textarea" %>
+        </div>
+        <div class="actions mt-5">
+          <%= f.submit "投稿", class: "button is-success" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

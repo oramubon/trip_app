@@ -41,7 +41,7 @@ class ToursController < ApplicationController
   end
 
   def search
-    @tours = Tour.where(country_id: params[:country_id])
+    @tours = Tour.where(country_id: params[:country_id]).order("created_at DESC").page(params[:page]).per(5)
   end
 
   private

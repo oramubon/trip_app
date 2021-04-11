@@ -4,7 +4,11 @@
       <div class="card mb-6">
         <header class="card-header">
           <p class="card-header-title">
-            <%= @user.nickname %>
+            <% if @user.nickname.present? %>
+              <%= @user.nickname %>
+            <% else %>
+              <%= @user.first_name %>
+            <% end %>
           </p>
           <%if current_user.id != @user.id %>
             <%= link_to "レビューを書く", new_user_review_path(@user), class: "button card-header-item mt-1 mr-4" %>
@@ -17,7 +21,7 @@
               <div class="star-rating-back">★★★★★</div>
             </div>
             <div class="average-score-display ml-3 pt-2">
-              <%= @user.avg_score %>点（<%= @user.reviewee_reviews.count %>件のレビュー）
+              <%= @user.avg_score %> 点（<%= @user.reviewee_reviews.count %> 件のレビュー）
             </div>
           </div>
         </div>
@@ -36,8 +40,8 @@
               <% else %>
                 <td><%= review.reviewer.first_name %></td>
               <% end %>
-              <td><%= review.score %></td>
-              <td><%= link_to "クチコミを見る", root_path, class: "button is-size-7" %></td>
+              <td><%= review.score %> 点</td>
+              <td><%= link_to "クチコミを見る", user_review_path(id: review.id), class: "button is-size-7" %></td>
             </tr>
           <% end %>
         </tbody>

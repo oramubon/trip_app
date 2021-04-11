@@ -1,69 +1,74 @@
 <div class="container mt-6">
   <div class="columns is-centered">
-    <div class="column is-5 mb-6">
-      <div class="card mb-4">
+    <div class="column is-10 mb-6">
+      <div class="card">
         <header class="card-header">
             <p class="card-header-title">
               <%= @tour.title %>
             </p>
         </header>
-        <div class="card-content">
-          <div class="content">
+        <div class="card-content details">
+          <div class="content tour-img">
             <%= image_tag @tour.image, class: "img" %>
+            <% if @tour.purchase.present? %> 
+              <div class="fin is-size-1" style="font-family: cursive;">
+                <span>Finish</span>
+              </div>
+            <% end %>
           </div>
-          <div class="content">
-            <p>日程：<%= @tour.start_on %> 〜 <%= @tour.end_on %></p>
-          </div>
-          <div class="content">
-            <p>旅先：<%= @tour.country.name %></p>
-          </div>
-          <div class="content">
-            <p>内容</p>
-            <p><%= @tour.description %></p>
-          </div>
-          <div class="content">
-            <p>料金：<%= @tour.price %> 円</p>
+          <div class="mt-5 mb-5 ml-5">
+            <div class="content">
+              <p>日程：<%= @tour.start_on %> 〜 <%= @tour.end_on %></p>
+            </div>
+            <div class="content">
+              <p>旅先：<%= @tour.country.name %></p>
+            </div>
+            <div class="content">
+              <p>料金：<%= @tour.price %> 円</p>
+            </div>
+            <div class="content">
+              内容
+              <div class="">
+                <%= simple_format @tour.description, class: "text m-2" %>
+              </div>
+            </div>
           </div>
         </div>
+        <%= form_with model: @purchase_information, url: tour_purchases_path, id: 'charge-form', local: true do |f| %>
+          <div class='field ml-5 mb-5 card-number-cvc'>
+            <%= f.label :num,  "カード番号" %>
+            <%= f.text_field :num, autofocus: true, placeholder:"カード番号(半角英数字)", class:"num input", maxlength:"16" %>
+          </div>
+          <div class='field m-5 card-number-cvc'>
+            <%= f.label :cvc ,"ＣＶＣ" %>
+            <%= f.text_field :cvc, placeholder:"カード背面4桁もしくは3桁の番号", class:"cvc input", maxlength:"4" %>
+          </div>
+          <div class='field m-5 card-exp'>
+            <p>有効期限</p>
+            <div class='input-expiration-date-wrap'>
+              <%= f.text_field :exp_month, placeholder:"例)3", class:"exp_month input" %>
+              <p class="m-3">月</p>
+              <%= f.text_field :exp_year, placeholder:"例)24", class:"exp_year input" %>
+              <p class="m-3">年</p>
+            </div>
+          </div>
+          <div class="field m-5 phone-number">
+            <%= f.label :phone_number, "電話番号（必須）" %>
+            <p class="control">
+              <%= f.text_field :phone_number, :placeholder => "例）09012345678", class: "input" %>
+            </p>
+          </div>
+          <div class="field m-5 other">
+            <%= f.label :other, "ご要望（任意）" %>
+            <p class="control">
+              <%= f.text_area :other, :placeholder => "例）〇〇にいきたい！、〇〇は食べれない！… などご自由にお書き下さい", class: "textarea" %>
+            </p>
+          </div>
+          <div class="actions m-5 is-centered">
+            <%= f.submit "申し込む", class: "button is-success" %>
+          </div>
+        <% end %>
       </div>
-      <%= form_with model: @purchase_information, url: tour_purchases_path, id: 'charge-form', local: true do |f| %>
-
-        <div class='field'>
-          <%= f.label :num,  "カード番号" %>
-          <%= f.text_field :num, class:"num input", placeholder:"カード番号(半角英数字)", maxlength:"16" %>
-        </div>
-        <div class='field'>
-          <%= f.label :cvc ,"ＣＶＣ" %>
-          <%= f.text_field :cvc, class:"cvc input", placeholder:"カード背面4桁もしくは3桁の番号", maxlength:"4" %>
-        </div>
-        <div class='field'>
-          <p>有効期限</p>
-          <div class='input-expiration-date-wrap'>
-            <%= f.text_field :exp_month, class:"exp_month", placeholder:"例)3" %>
-            <p>月</p>
-            <%= f.text_field :exp_year, class:"exp_year", placeholder:"例)24" %>
-            <p>年</p>
-          </div>
-        </div>
-
-        <div class="field">
-          <%= f.label :phone_number %>
-          <p class="control">
-            <%= f.text_field :phone_number, autofocus: true, :placeholder => "phone_number", class: "input" %>
-          </p>
-        </div>
-
-        <div class="field">
-          <%= f.label :other %>
-          <p class="control">
-            <%= f.text_area :other, :placeholder => "other", class: "textarea" %>
-          </p>
-        </div>
-
-        <div class="actions">
-          <%= f.submit "申し込む", class: "button is-success" %>
-        </div>
-      <% end %>
     </div>
   </div>
 </div>

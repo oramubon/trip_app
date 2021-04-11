@@ -1,6 +1,6 @@
 <div class="container mt-6">
   <div class="columns is-centered">
-    <div class="column is-5">
+    <div class="column is-10">
       <div class="card mb-6">
         <header class="card-header">
             <p class="card-header-title">
@@ -9,9 +9,15 @@
             <% if current_user.id == @tour.user_id && @tour.purchase.blank? %>
               <%= link_to 'Edit', edit_tour_path, class: "button card-header-item mt-1 mr-4" %>
               <%= link_to 'Destroy', tour_path, method: :delete, class: "button card-header-item mt-1 mr-4",  data: { confirm: '削除しますか？' }  %> 
+            <% else %>
+              <% if @tour.user.nickname.present? %>
+                <%= link_to @tour.user.nickname, user_path(@tour.user_id), class: "button card-header-item mt-1 mr-4" %>
+              <% else %>
+                <%= link_to @tour.user.first_name, user_path(@tour.user_id), class: "button card-header-item mt-1 mr-4" %>
+              <% end %>
             <% end %>
         </header>
-        <div class="card-content">
+        <div class="card-content details">
           <div class="content tour-img">
             <%= image_tag @tour.image, class: "img" %>
             <% if @tour.purchase.present? %> 
@@ -20,26 +26,29 @@
               </div>
             <% end %>
           </div>
-          <div class="content">
-            <p>日程：<%= @tour.start_on %> 〜 <%= @tour.end_on %></p>
-          </div>
-          <div class="content">
-            <p>旅先：<%= @tour.country.name %></p>
-          </div>
-          <div class="content">
-            <p>内容</p>
-            <%= simple_format @tour.description, class: "text" %>
-          </div>
-          <div class="content">
-            <p>料金：<%= @tour.price %> 円</p>
+          <div class="mt-5 mb-5 ml-5">
+            <div class="content">
+              <p>日程：<%= @tour.start_on %> 〜 <%= @tour.end_on %></p>
+            <div class="content">
+              <p>旅先：<%= @tour.country.name %></p>
+            </div>
+            <div class="content">
+              <p>料金：<%= @tour.price %> 円</p>
+            </div>
+            <div class="content">
+              内容
+              <div>
+                <%= simple_format @tour.description, class: "text m-2" %>
+              </div>
+            </div>
           </div>
         </div>
-        <footer class="card-footer">
+      </div>
+      <footer class="card-footer">
           <% if current_user.id != @tour.user.id && @tour.purchase.blank? %>
             <%= link_to "申し込む", new_tour_purchase_path(@tour), class: "button card-footer-item" %>
           <% end %>
         </footer>
-      </div>
     </div>
   </div>
 </div>

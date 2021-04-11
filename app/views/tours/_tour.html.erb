@@ -1,0 +1,47 @@
+<div class="container mt-6">
+  <div class="columns is-centered">
+    <div class="column is-5">
+      <%= form_with(url: search_tours_path, local: true, method: :get, class: "search-form mb-5") do |f| %>
+        <%= f.collection_select(:country_id, Country.all, :id, :name, {}, {class: "input"}) %>
+        <%= f.submit "検索", class: "button ml-2" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="columns is-centered">
+    <div class="column is-5">
+      <% tours.each do |tour| %>
+        <div class="card mb-6">
+          <header class="card-header">
+            <p class="card-header-title">
+              <%= tour.title %>
+            </p>
+            <% if tour.user.nickname.present? %>
+              <%= link_to tour.user.nickname, user_path(tour.user_id), class: "button card-header-item mt-1 mr-4" %>
+            <% else %>
+              <%= link_to tour.user.first_name, user_path(tour.user_id), class: "button card-header-item mt-1 mr-4" %>
+            <% end %>
+          </header>
+          <div class="card-content">
+            <div class="content tour-img">
+              <%= link_to image_tag(tour.image, class: "img" ), tour_path(tour) %>
+              <% if tour.purchase.present? %> 
+                <div class="fin is-size-1" style="font-family: cursive;">
+                  <span>Finish</span>
+                </div>
+              <% end %>
+            </div>
+            <div class="content">
+              <p>日程：<%= tour.start_on %> 〜 <%= tour.end_on %></p>
+            </div>
+            <div class="content mb-2">
+              <p>料金：<%= tour.price %> 円</p>
+            </div>
+          </div> 
+        </div> 
+      <% end %>
+      <div class="mb-6">
+        <%= paginate tours %>
+      </div>
+    </div>
+  </div>
+</div>
