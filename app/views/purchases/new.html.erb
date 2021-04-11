@@ -7,7 +7,7 @@
               <%= @tour.title %>
             </p>
         </header>
-        <div class="card-content tour-details">
+        <div class="card-content details">
           <div class="content tour-img">
             <%= image_tag @tour.image, class: "img" %>
             <% if @tour.purchase.present? %> 
@@ -28,8 +28,8 @@
             </div>
             <div class="content">
               内容
-              <div class="mt-1 mb-2">
-                <%= simple_format @tour.description, class: "text" %>
+              <div class="">
+                <%= simple_format @tour.description, class: "text m-2" %>
               </div>
             </div>
           </div>
