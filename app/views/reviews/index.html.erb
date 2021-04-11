@@ -4,7 +4,11 @@
       <div class="card mb-6">
         <header class="card-header">
           <p class="card-header-title">
-            <%= @user.nickname %>
+            <% if @user.nickname.present? %>
+              <%= @user.nickname %>
+            <% else %>
+              <%= @user.first_name %>
+            <% end %>
           </p>
           <%if current_user.id != @user.id %>
             <%= link_to "レビューを書く", new_user_review_path(@user), class: "button card-header-item mt-1 mr-4" %>
