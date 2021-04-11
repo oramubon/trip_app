@@ -2,20 +2,19 @@
   <div class="columns is-centered">
     <div class="column is-6">
       <%= form_for @image do |f| %>
-      <%= render "devise/shared/error_messages", resource: @image %>
+        <%= render "devise/shared/error_messages", resource: @image %>
         <div class="field new-image">
-          <%= f.label :image %>
+          <%= f.label :image, "ユーザー画像（必須）" %>
           <%= f.file_field :image, class: "input" %>
         </div>
         <div class="field">
-          <%= f.label :introduction %>
-          <%= f.text_area :introduction, :placeholder => "introduction", class: "textarea" %>
+          <%= f.label :introduction, "自己紹介（任意）" %>
+          <%= f.text_area :introduction, :placeholder => "こんにちわ！私は…", class: "textarea" %>
         </div>
-        <div class="actions">
-          <%= f.submit "Sign up", class: "button is-success" %>
+        <div class="actions  mt-2">
+          <%= f.submit "登録", class: "button is-success" %>
         </div>
       <% end %>
-      <%= render "devise/shared/links" %>
     </div>
   </div>
 </div>

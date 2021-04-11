@@ -26,16 +26,17 @@
   font-size: 16px;
 }
 
-.user-name {
-  width: 300px;
-}
 
-.user-birthday {
+.user-name {
   display: flex;
 }
 
 .user-gender {
   width: 100px;
+}
+
+.user-birthday {
+  width: 200px;
 }
 
 .birthday-gender {
