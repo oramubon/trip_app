@@ -47,14 +47,12 @@
             </div>
           </div>
         </div>
-        <% if user_signed_in?%>
-          <footer class="card-footer">
-            <%= link_to "レビューを見る", user_reviews_path(@user), class: "button card-footer-item" %>
-            <% if current_user.id != @user.id %>
-              <%= link_to "レビューを書く", new_user_review_path(@user), class: "button card-footer-item" %>
-            <% end %>
-          </footer>
-        <% end %>
+        <footer class="card-footer">
+          <%= link_to "レビューを見る", user_reviews_path(@user), class: "button card-footer-item" %>
+          <% if current_user.id != @user.id %>
+            <%= link_to "レビューを書く", new_user_review_path(@user), class: "button card-footer-item" %>
+          <% end %>
+        </footer>
       </div>
     </div>
   </div>
