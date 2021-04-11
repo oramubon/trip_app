@@ -10,6 +10,6 @@ class UsersController < ApplicationController
   end
 
   def search
-    @users = User.search(params[:keyword])
+    @users = User.search(params[:keyword]).page(params[:page]).per(5)
   end
 end
