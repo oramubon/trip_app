@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :new, :create]
+  before_action :authenticate_user!
   before_action :set_user,           only: [:index, :new, :create]
   before_action :move_to_index,      only: [:new, :create]
 
@@ -19,6 +19,10 @@ class ReviewsController < ApplicationController
       @reviews = @user.reviewee_reviews
       render :index
     end
+  end
+
+  def show
+    @review = Review.find(params[:id])
   end
 
   private

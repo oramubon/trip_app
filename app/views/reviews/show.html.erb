@@ -1,0 +1,25 @@
+<div class="container mt-6">
+  <div class="columns is-centered">
+    <div class="column is-5">
+      <div class="card mb-6">
+        <header class="card-header">
+          <p class="card-header-title">
+            <% if @review.reviewer.nickname.present? %>
+              <%= link_to @review.reviewer.nickname, user_path(@review.reviewer), class: "button" %>
+            <% else %>
+              <%= link_to @review.reviewer.first_name, user_path(@review.reviewer), class: "button" %>
+            <% end %>
+          </p>
+          <p class="card-header-title">
+            <%= @review.score %> 点
+          </p>
+        </header>
+        <div class="card-content">
+          <div class="content">
+            <%= simple_format @review.content, class: "text" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
