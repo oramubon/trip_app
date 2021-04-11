@@ -2,20 +2,20 @@
   <div class="columns is-centered">
     <div class="column is-6">
       <%= form_with model: tweet, local: true do |f| %>
-        <div class="field new-image">
-          <%= f.label :image %>
+        <div class="field">
+          <%= f.label :image, "画像" %>
           <%= f.file_field :image, class: "input" %>
         </div>
-        <div class="field new-title">
-          <%= f.label :title %>
-          <%= f.text_field :title, autofocus: true, :placeholder => "title", class: "input" %>
+        <div class="field">
+          <%= f.label :title, "タイトル" %>
+          <%= f.text_field :title, autofocus: true, :placeholder => "BBQ", class: "input" %>
         </div>
         <div class="field">
-          <%= f.label :text %>
-          <%= f.text_area :text, :placeholder => "text", class: "textarea" %>
+          <%= f.label :text, "内容" %>
+          <%= f.text_area :text, :placeholder => "例）今日はみんなでBBQを…", class: "textarea" %>
         </div>
-        <div class="actions">
-          <%= f.submit "Tweet", class: "button is-success" %>
+        <div class="actions mt-5">
+          <%= f.submit "投稿", class: "button is-success" %>
         </div>
       <% end %>
     </div>
