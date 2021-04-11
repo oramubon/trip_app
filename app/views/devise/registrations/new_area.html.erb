@@ -4,7 +4,7 @@
       <%= form_for @area do |f| %>
         <%= render "devise/shared/error_messages", resource: @area %>
         <div class="field">
-          <%= f.label :country, "言語（必須）" %>
+          <%= f.label :country, "国（必須）" %>
           <p class="control has-icons-left">
             <%= f.collection_select(:country_id, Country.all, :id, :name, {}, {class: "input"}) %>
             <span class="icon is-small is-left">
@@ -13,7 +13,7 @@
           </p>
         </div>
         <div class="field">
-          <%= f.label :state, "地域（任意）" %>
+          <%= f.label :state, "地域（必須）" %>
           <p class="control has-icons-left">
             <%= f.text_field :state, :placeholder => "例）東京", class: "input" %>
             <span class="icon is-small is-left">
@@ -22,7 +22,7 @@
           </p>
         </div>
         <div class="field">
-          <%= f.label :language_id, "母国語（必須）" %>
+          <%= f.label :language_id, "言語（必須）" %>
           <p class="control has-icons-left">
             <%= f.collection_select(:language_id, Language.all, :id, :name, {}, {class: "input"}) %>
             <span class="icon is-small is-left">
