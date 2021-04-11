@@ -9,6 +9,12 @@
             <% if current_user.id == @tweet.user_id %>
               <%= link_to 'Edit', edit_tweet_path, class: "button card-header-item mt-1 mr-4" %>
               <%= link_to 'Destroy', tweet_path, method: :delete, class: "button card-header-item mt-1 mr-4", data: { confirm: '削除しますか？' } %> 
+            <% else %>
+              <% if @tweet.user.nickname.present? %>
+                <%= link_to @tweet.user.nickname, user_path(@tweet.user_id), class: "button card-header-item mt-1 mr-4" %>
+              <% else %>
+                <%= link_to @tweet.user.first_name, user_path(@tweet.user_id), class: "button card-header-item mt-1 mr-4" %>
+              <% end %>
             <% end %>
         </header>
         <div class="card-content">
